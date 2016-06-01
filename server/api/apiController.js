@@ -17,16 +17,25 @@ all sent in json body
 const apiController = {
   postEmail: ({ body: { email, google, apple }}, res, next) => {
     if (email && google && apple) {
-      let mailOptions = {
-        from: 'elliotschi@gmail.com',
-        to: email,
-        subject: `${new Date()} Google & Apple Stocks`,
-        text: `
-          <h2>${new Date()} Google & App Stock prices:<h2>
-            <h3>Google: ${google}</h3></br>
-            <h3>Apple: ${apple}</h3>
-        `
-      };
+      // let mailOptions = {
+      //   from: 'elliotschi@gmail.com',
+      //   to: email,
+      //   subject: `${new Date()} Google & Apple Stocks`,
+      //   text: `
+      //     ${new Date()} Google & App Stock prices:
+      //       Google: ${google}\n
+      //       Apple: ${apple}
+      //   `
+      // };
+      let mailOptions = new sendgrid.Email();
+      mailOptions.addTo(email);
+      mailOptions.addFrom('elliotschi@gmail.com');
+      mailOptions.setSubject(`${new Date()} Google & Apple Stocks`);
+      mailOptions.setHtml(`
+            <h3>${new Date()} Google & App Stock prices: </h3>
+             Google: ${google}</br>
+             Apple: ${apple}       
+      `);
       
       sendgrid.send(mailOptions, (err, json) => {
           if (err) {
