@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../actions/actions';
 import { Row } from 'react-materialize';
 import StockInfo from '../components/StockInfo';
+import { isEmail } from 'validator';
 
 const { func, object, string, bool } = PropTypes;
 
@@ -29,7 +30,7 @@ class LandingContainer extends Component {
   onSubmit(event) {
     event.preventDefault();
     const email = this.email;
-    if (email.includes('.com') && email.includes('@')) {
+    if (isEmail(email)) {
       this.email = '';
       
       this.props.submittingEmail(email);
