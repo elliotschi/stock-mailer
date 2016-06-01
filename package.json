@@ -5,9 +5,8 @@
   "main": "server/server.js",
   "scripts": {
     "test": "mocha  --compilers js:babel-core/register --recursive tests/**.js",
-    "start": "node server/server",
-    "start:dev": "nodemon server/server",
-    "postinstall": "webpack -p"
+    "start": "webpack -p && node server/server",
+    "start:dev": "nodemon server/server"
   },
   "repository": {
     "type": "git",
