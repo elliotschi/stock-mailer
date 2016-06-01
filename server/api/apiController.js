@@ -2,15 +2,8 @@ require('dotenv').config();
 const request = require('pify')(require('request'), {
   multiArgs: true 
 });
-const { createTransport } = require('nodemailer');
 
-const transporter = createTransport({
-  service: 'Gmail',
-  auth: {
-    user: 'trippianApp@gmail.com',
-    pass: 'teamaudrey'
-  }
-});
+const sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 
 /*
 email is a string
@@ -25,22 +18,24 @@ const apiController = {
   postEmail: ({ body: { email, google, apple }}, res, next) => {
     if (email && google && apple) {
       let mailOptions = {
-        from: 'stock-mailer',
+        from: 'elliotschi@gmail.com',
         to: email,
         subject: `${new Date()} Google & Apple Stocks`,
-        html: `
-          <h1>${new Date()} Google & App Stock prices:
-          <h3>
-            Google: ${google}</br>
+        text: `
+          ${new Date()} Google & App Stock prices:
+            Google: ${google}\n
             Apple: ${apple}
-          </h3>
         `
       };
-
-      transporter.sendMail(mailOptions, (err, info) => {
-        if (err) next(new Error('email could not be sent'));
-        res.json(info);
-      })
+      
+      sendgrid.send(mailOptions, (err, json) => {
+          if (err) {
+            next(err);
+          } else {
+            console.log(json);
+            res.send(json);
+          }
+      });
     } else {
       next(new Error('must send email and stocks'));
     }
