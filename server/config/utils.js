@@ -2,8 +2,9 @@
 
 const utils = {
   errorHandler: (err, req, res, next) => {
-    res.status(500);
-    res.render('error', {error: err})
+    res.status(500).send({
+      error: err.message
+    });
   },
   
   errorLogger: (err, req, res, next) => {

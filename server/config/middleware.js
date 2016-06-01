@@ -35,13 +35,17 @@ module.exports = (app, express) => {
   app.use(json());
   app.use(urlencoded({extended: true}));
   
+  let router = express.Router();
+  app.use('/api', router);
+  require('../api/apiRoutes')(router);
+  
   app.use(express.static(joinPaths(__dirname, '../../dist')));
   // add my stylesheets
   app.use('/style', express.static(joinPaths(__dirname, '../../node_modules/materialize-css/dist')));
   
-  // app.use('*', (req, res) => {
-  //   res.sendStatus(404).send('404: Page not found');
-  // });
+  app.use('*', (req, res) => {
+    res.sendStatus(404).send('404: Page not found');
+  });
   
   // error handling
   app.use(errorHandler);
