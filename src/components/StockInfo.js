@@ -11,7 +11,7 @@ const StockInfo = ({ isFetching, data, fetchingError }) =>
     { fetchingError.length > 0 ? Materialize.toast('Could not fetch information', 2000) : ''}
     
     { !isEmpty(data) ?
-    <Col s={4}>
+    <Col s={4} m={4}>
       <Card header={
         <CardTitle reveal image={'https://www.tradingadvantage.com/wp-content/uploads/2013/10/TA_COURSES_STOCKS1.png'} 
         waves='light' />

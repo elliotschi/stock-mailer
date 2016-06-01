@@ -54,7 +54,7 @@ class LandingContainer extends Component {
     
     return (
       <div>
-        <Row s={12}>
+        <Row s={12} m={12}>
           <StockInfo data={google} isFetching={isFetching} fetchingError={fetchingError}/>
           <StockInfo data={apple} isFetching={isFetching} fetchingError={fetchingError}/>
           <div>
