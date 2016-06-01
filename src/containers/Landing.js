@@ -29,10 +29,15 @@ class LandingContainer extends Component {
   onSubmit(event) {
     event.preventDefault();
     const email = this.email;
-    this.email = '';
+    if (email.includes('.com') && email.includes('@')) {
+      this.email = '';
+      
+      this.props.submittingEmail(email);
+      this.context.router.push('/success');  
+    } else {
+      Materialize.toast('email format is not valid please try again', 2000);
+    }
     
-    this.props.submittingEmail(email);
-    this.context.router.push('/success');
   }
   
   componentWillMount() {
