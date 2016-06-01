@@ -47,7 +47,7 @@ const apiController = {
 
       transporter.sendMail(mailOptions, (err, info) => {
         if (err) next(new Error('email could not be sent'));
-        res.json(info)
+        res.json(info);
       })
     } else {
       next(new Error('must send email and stocks'));

@@ -43,6 +43,7 @@ module.exports = (app, express) => {
   // add my stylesheets
   app.use('/style', express.static(joinPaths(__dirname, '../../node_modules/materialize-css/dist')));
   
+  app.use(history());
   app.use('*', (req, res) => {
     res.sendStatus(404).send('404: Page not found');
   });
