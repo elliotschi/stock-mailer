@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions/actions';
-import { Preloader } from 'react-materialize';
+import { Row } from 'react-materialize';
 import StockInfo from '../components/StockInfo';
 
 const { func, object, string, bool } = PropTypes;
@@ -34,9 +34,10 @@ class LandingContainer extends Component {
     
     return (
       <div>
-        <StockInfo data={google} isFetching={isFetching} fetchingError={fetchingError}/>
-        <StockInfo data={apple} isFetching={isFetching} fetchingError={fetchingError}/>
-        
+        <Row>
+          <StockInfo data={google} isFetching={isFetching} fetchingError={fetchingError}/>
+          <StockInfo data={apple} isFetching={isFetching} fetchingError={fetchingError}/>
+        </Row>
       </div>
     );
   }
