@@ -22,9 +22,9 @@ const apiController = {
         to: email,
         subject: `${new Date()} Google & Apple Stocks`,
         text: `
-          ${new Date()} Google & App Stock prices:
-            Google: ${google}\n
-            Apple: ${apple}
+          <h2>${new Date()} Google & App Stock prices:<h2>
+            <h3>Google: ${google}</h3></br>
+            <h3>Apple: ${apple}</h3>
         `
       };
       
