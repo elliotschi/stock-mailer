@@ -38,9 +38,6 @@ const base = {
     loaders: [
       {test: /\.(js|jsx)?$/, exclude: /node_modules/, loader: 'babel-loader'}
     ]
-  },
-  resolve: {
-    root: path.resolve('./src')
   }
 };
 

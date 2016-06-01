@@ -1,12 +1,15 @@
-'use strict';
+'use strict'
 
-module.exports = {
-  logError: (err, req, res, next) => {
-    console.error(err.stack);
-    next(err);
+const utils = {
+  errorHandler: (err, req, res, next) => {
+    res.status(500);
+    res.render('error', {error: err})
   },
   
-  handleError: (err, req, res) => {
-    res.status(500).send({error: err.message});
+  errorLogger: (err, req, res, next) => {
+    console.error(err.stack);
+    next(err);
   }
 }
+
+module.exports = utils;

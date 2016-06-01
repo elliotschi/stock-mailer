@@ -9,9 +9,9 @@ const {
 const joinPaths = require('path').join;
 // error loggers and handlers created in utils file
 const {
-  logError,
-  handleError
-} = require('utils');
+  errorHandler,
+  errorLogger
+} = require('./utils');
 // middleware for express that applies gzip compression for every request and response
 const compression = require('compression');
 // middleware that allows react router's browser history to work
@@ -37,13 +37,13 @@ module.exports = (app, express) => {
   
   app.use(express.static(joinPaths(__dirname, '../../dist')));
   // add my stylesheets
-  app.use('/style', express.static(joinPaths(__dirname, '../node_modules/materialize-css/dist')));
+  app.use('/style', express.static(joinPaths(__dirname, '../../node_modules/materialize-css/dist')));
   
-  app.use('*', (req, res) => {
-    res.sendStatus(404).send('404: Page not found');
-  });
+  // app.use('*', (req, res) => {
+  //   res.sendStatus(404).send('404: Page not found');
+  // });
   
   // error handling
-  app.use(logError);
-  app.use(handleError);
+  app.use(errorHandler);
+  app.use(errorLogger);
 }

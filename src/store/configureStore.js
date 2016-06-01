@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 
 const configureStore = () => {
   const store = createStore(reducer, compose(
-    applyMiddleware(ReduxPromise),
+    applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : (f) => f
     )
   )
