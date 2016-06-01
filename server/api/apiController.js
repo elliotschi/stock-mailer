@@ -4,11 +4,19 @@ const request = require('pify')(require('request'), {
 });
 const { createTransport } = require('nodemailer');
 
+// const transporter = createTransport({
+//   service: 'Gmail',
+//   auth: {
+//     user: process.env.GMAIL_ACCOUNT,
+//     pass: process.env.GMAIL_PWD
+//   }
+// });
+
 const transporter = createTransport({
   service: 'Gmail',
   auth: {
-    user: process.env.GMAIL_ACCOUNT,
-    pass: process.env.GMAIL_PWD
+    user: 'trippianApp@gmail.com',
+    pass: 'teamaudrey'
   }
 });
 
