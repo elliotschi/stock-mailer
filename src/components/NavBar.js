@@ -8,6 +8,7 @@ const NavBar = props => (
       <ul id="nav-mobile" className="left hide-on-med-and-down">
         <li> <a href="https://www.github.com/elliotschi/stock-mailer">source</a></li>
       </ul>
+
     </div>
   </nav>
 );
