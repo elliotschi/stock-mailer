@@ -1,4 +1,4 @@
-export const getStockData = ( => {
+export const getStockData = () => 
   fetch('/api/stocks', {
     method: 'get',
     headers: {
@@ -6,10 +6,9 @@ export const getStockData = ( => {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => response.json())
-};
+  .then(response => response.json());
 
-export const submitEmail = (email, google, apple) => {
+export const postEmail = (email, google, apple) => 
   fetch('/api/stocks', {
     method: 'post',
     headers: {
@@ -22,5 +21,4 @@ export const submitEmail = (email, google, apple) => {
       apple
     })
   })
-  .then(response => response.json())
-};
+  .then(response => response.json());

@@ -1,8 +1,12 @@
 import * as actions from '../constants/actionTypes';
 import {
   getStockData,
-  submitEmail
+  postEmail
 } from '../helpers/api';
+
+import {
+  isEmpty
+} from 'lodash';
 
 // actions for stock data
 export const fetchStockData = () => {
@@ -58,7 +62,7 @@ export const submitEmailError = error => {
 // thunk for sending the email
 export const submittingEmail = (email) => (dispatch, getState) => {
   let { google, apple } = getState();
-  if (google && apple) {
+  if (!isEmpty(google) && !isEmpty(apple)) {
     dispatch(submitEmail(email));
     submitEmail(email, google.price, apple.price)
       .then(data => dispatch(submitEmailSuccess(data)))

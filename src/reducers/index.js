@@ -3,8 +3,8 @@ import * as actions from '../constants/actionTypes';
 const initialState = {
   isFetching: false,
   isSending: false,
-  google: null,
-  apple: null,
+  google: {},
+  apple: {},
   fetchingError: '',
   sendingError: ''
 };

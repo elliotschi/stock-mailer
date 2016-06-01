@@ -4,7 +4,6 @@ import {
 } from 'react-dom';
 import configureStore from './store/configureStore';
 import routes from './routes';
-import Hello from './components/hello';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 
