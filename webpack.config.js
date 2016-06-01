@@ -6,8 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const LAUNCH_COMMAND = process.env.npm_lifecycle_event;
 
-const isProduction = LAUNCH_COMMAND === 'production';
-process.env.BABEL_ENV = LAUNCH_COMMAND;
+const isProduction = process.env.NODE_ENV === 'production';
+process.env.BABEL_ENV = process.env.NODE_ENV;
 
 const PATHS = {
   app: path.join(__dirname, 'src'),
