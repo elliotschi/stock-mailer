@@ -1,6 +1,8 @@
 # stock-mailer
 this is a project that pulls in stock data for Apple and Google and displays it on the screen. Once the data is rendered, if you click on a card you can see a bar graph with the first two bars as the day's low and high, and the year's low and high
 
+it is deployed [here](https://stock-mailer.herokuapp.com/)
+
 ## Installation
 There are a few steps needed to install and run this project locally
 
@@ -32,8 +34,5 @@ This project incorporates the following technologies:
 - Materialize CSS framework
 - Heroku for deployment
 - SendGrid for email
-
-
-it is deployed [here](https://www.stock-mailer.herokuapp.com)
 
 
