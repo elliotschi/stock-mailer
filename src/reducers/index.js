@@ -46,7 +46,8 @@ export default (state = initialState, action) => {
     case actions.SUBMIT_EMAIL_ERROR:
       return {
         ...state,
-        sendingError: 'could not submit email'
+        sendingError: 'could not submit email',
+        isSending: false
       }
       
     default:
