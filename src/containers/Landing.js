@@ -9,6 +9,7 @@ const { func, object, string, bool } = PropTypes;
 class LandingContainer extends Component {
   static propTypes = {
     fetchingStockData: func.isRequired,
+    submittingEmail: func.isRequired,
     google: object.isRequired,
     apple: object.isRequired,
     isFetching: bool.isRequired,
@@ -19,6 +20,19 @@ class LandingContainer extends Component {
   
   static contextTypes = {
     router: object.isRequired
+  }
+  
+  onChange(e) {
+    this.email = e.target.value;
+  }
+  
+  onSubmit(event) {
+    event.preventDefault();
+    const email = this.email;
+    this.email = '';
+    
+    this.props.submittingEmail(email);
+    this.context.router.push('/success');
   }
   
   componentWillMount() {
@@ -34,9 +48,20 @@ class LandingContainer extends Component {
     
     return (
       <div>
-        <Row>
+        <Row s={12}>
           <StockInfo data={google} isFetching={isFetching} fetchingError={fetchingError}/>
           <StockInfo data={apple} isFetching={isFetching} fetchingError={fetchingError}/>
+          <div>
+            <form className='col s6' onSubmit={::this.onSubmit}>
+              <Row>
+                <i className="material-icons">mail outline</i>
+                <input id="email" type="text" className="validate" onChange={::this.onChange} placeholder='enter your email'/>
+                <button className='btn-floating btn-large waves-effect waves-light green' type='submit' value='submit'>
+                  <i className='material-icons'>add</i>
+                </button>
+              </Row>
+            </form>
+          </div>
         </Row>
       </div>
     );
@@ -47,7 +72,5 @@ const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
-  {
-    ...actionCreators
-  }
+  actionCreators
 )(LandingContainer);

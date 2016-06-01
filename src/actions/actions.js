@@ -64,9 +64,9 @@ export const submittingEmail = (email) => (dispatch, getState) => {
   let { google, apple } = getState();
   if (!isEmpty(google) && !isEmpty(apple)) {
     dispatch(submitEmail(email));
-    submitEmail(email, google.price, apple.price)
+    postEmail(email, google.price, apple.price)
       .then(data => dispatch(submitEmailSuccess(data)))
-      .then(err => dispatch(submitEmailError(err)));
+      .catch(err => dispatch(submitEmailError(err)));
   } else {
     dispatch(submitEmailError(email));
   }

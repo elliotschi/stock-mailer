@@ -9,7 +9,7 @@ export const getStockData = () =>
   .then(response => response.json());
 
 export const postEmail = (email, google, apple) => 
-  fetch('/api/stocks', {
+  fetch('/api/email', {
     method: 'post',
     headers: {
       'Accept': 'application/json',
