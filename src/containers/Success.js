@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-const Success = ({ sendingError }) => (
+const Success = ({ sendingError, isSending }) => (
   <div>
-    {sendingError.length > 0 ? Materialize.toast('Could not send to that email, try again', 4000) : Materialize.toast('successfully sent email', 4000)}
+    {sendingError.length > 0 && !isSending ? Materialize.toast('Could not send to that email, try again', 4000) : Materialize.toast('successfully sent email', 4000)}
     <h2>
       {'Return to home'}
     </h2>
